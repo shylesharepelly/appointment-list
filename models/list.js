@@ -11,6 +11,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+
+    }
+    
+    static addappointment({ title, time}) {
+      return this.create({ title: title, timeslot:time});
+    }
+    
+    static getlist()
+    {
+      return this.findAll();
     }
   }
   List.init({
