@@ -14,15 +14,36 @@ module.exports = (sequelize, DataTypes) => {
 
     }
     
-    static addappointment({ title, time}) {
+    static addappointment( title, time) {
       return this.create({ title: title, timeslot:time});
     }
     
     static getlist()
     {
-      return this.findAll();
+      return this.findAll({
+        order: [
+          ['timeslot', 'ASC'],
+      ],
+      });
     }
+
+    
+  static modifytitle(title,lid){
+    console.log("title", title);
+    return this.update({title:title},
+      {
+        where:
+        {id:lid}
+      });
   }
+
+
+
+  }
+
+
+
+
   List.init({
     title: DataTypes.STRING,
     timeslot: DataTypes.STRING,
